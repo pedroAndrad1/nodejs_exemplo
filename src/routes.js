@@ -13,7 +13,8 @@ router.post('/users', UserController.store);
 router.put('/users/:user_id', UserController.update);
 router.delete('/users/:user_id', UserController.delete);
 router.post('/users/login', UserController.login);
-
+// Podia passar o middleware para cada rota individualmente.
+// Mas dessa forma, todas as rotas abaixo do router.use() vao usar o middleware.
 router.use(authMiddleware);
 
 router.get('/users/:user_id/address', AddressController.index);

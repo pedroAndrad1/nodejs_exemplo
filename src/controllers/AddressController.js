@@ -4,7 +4,8 @@ const Address = require('../models/Address');
 module.exports = {
     async index(req, res) {
         const { user_id } = req.params;
-
+        // Pega os adress's pela chave estrangeira user_id. 
+        // Retornando o User com o Adress. Tipo o populate do mongoose
         const user = await User.findByPk(user_id, {
             include: { association: 'address'}
         });

@@ -11,8 +11,9 @@ class Address extends Model {
             sequelize
         })
     }
-
+    //Fazo relacionamento das tabelas
     static associate(models) {
+      // relacionamento n : 1 com User
       this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
     }
 }

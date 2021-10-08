@@ -6,6 +6,8 @@ module.exports = {
         const { user_id } = req.params;
 
         const user = await User.findByPk(user_id, {
+            // o through diz quero apenas os ids. Sem ele, todas as infos da tabela de user_curso
+            // seria retornadas
             include: { association: 'courses', through: { attributes: [ 'user_id'] } }
         });
 
@@ -34,11 +36,12 @@ module.exports = {
                   message: 'Usuário não encontrado!'
               });
           }
-
+    
           const [ course ] = await Course.findOrCreate({
             where: { name }
           });
-
+          // Essa function e criada pelo sequelize porque esse e um relacionamento n:n.
+          // Olhar no doc para mais infos
           await user.addCourse(course);
 
           return res.status(200).json({

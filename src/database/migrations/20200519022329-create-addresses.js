@@ -9,10 +9,13 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
+      // Indicando que esse campo e uma pk
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        // Dizendo que a tabela de ref e de users e a chave o id
         references: { model: 'users', key: 'id' },
+        // CASCADE faz que quando altero/deleto esse dado, todos os associados sao alterados/deletados tbm
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },

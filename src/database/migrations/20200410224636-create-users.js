@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  //Neste metodo devem estar os comandos para criar/alterar a tabela
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.createTable('users', {
@@ -33,7 +34,7 @@ module.exports = {
     });
 
   },
-
+    //Neste metodo devem estar os comandos para desfazer os comandos de cima
   down: (queryInterface, Sequelize) => {
 
     return queryInterface.dropTable('users');

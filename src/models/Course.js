@@ -11,6 +11,7 @@ class Course extends Model {
     }
 
     static associate(models) {
+        //o through e o nome da tabela que faz o relacionamento n:n
         this.belongsToMany(models.User, { foreignKey: 'course_id', through: 'user_courses', as: 'users'});
     }
 }
